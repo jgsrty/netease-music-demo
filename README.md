@@ -30,5 +30,6 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
-
+## [在线预览](http://47.100.53.108/#/index)
+## [安卓app下载](http://47.100.53.108:8082/)
 ## 音乐api接口提供[地址](https://binaryify.github.io/NeteaseCloudMusicApi/#/)
