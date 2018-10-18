@@ -6,7 +6,7 @@
 
 ``` bash
 # 拉取node服务至本地
-clone https://github.com/jgsrty/NeteaseCloudMusicApi
+clone https://github.com/jgsrty/NeteaseCloudMusicApi.git
 
 # install dependencies
 npm install
