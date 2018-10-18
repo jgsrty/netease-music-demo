@@ -1,0 +1,51 @@
+html,
+body {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+p{
+  margin:0
+}
+/* cell-div */
+.cell-div {
+  background: #eee;
+  height: 0.1rem;
+}
+/* 单行溢出 */
+.line-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* 双行溢出 */
+.two-line-overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-wrap: break-word;
+}
+/* flex */
+.flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-justify-around {
+  display: flex;
+  justify-content: space-around;
+}
+.flex-direction-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
