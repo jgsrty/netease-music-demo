@@ -1,5 +1,8 @@
 # 网易云音乐vue
 
+## [在线预览](http://47.100.53.108/#/index)
+## [安卓app下载](http://47.100.53.108:8082/)
+
 > 启动项目需要同时本地启动node服务
 
 ## node服务
@@ -31,6 +34,4 @@ npm run build
 npm run build --report
 ```
 
-## [在线预览](http://47.100.53.108/#/index)
-## [安卓app下载](http://47.100.53.108:8082/)
 ## 音乐api接口提供[地址](https://binaryify.github.io/NeteaseCloudMusicApi/#/)
