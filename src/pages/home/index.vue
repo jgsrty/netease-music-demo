@@ -94,7 +94,7 @@ export default {
   activated() {
     this.$store.dispatch("setHeader", {
       hasBack: false,
-      title: "网易云音乐-乞丐版"
+      title: "网易云音乐-jenkins"
     });
     //better-scroll
     this.$nextTick(() => {
