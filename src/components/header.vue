@@ -1,0 +1,50 @@
+<template>
+  <div class="header flex">
+    <van-icon @click="showLeftFun" size="24" name="wap-nav" />
+    <div class="fake-search">大家都在搜 周杰伦</div>
+  </div>
+  <van-popup
+    v-model:show="showLeft"
+    position="left"
+    :style="{ height: '100%', width: '60%' }"
+    teleport="#app"
+  />
+</template>
+
+<script>
+import { ref } from "vue";
+export default {
+  setup() {
+    let showLeft = ref(false);
+    let showLeftFun = () => {
+      showLeft.value = true;
+    };
+    return { showLeft, showLeftFun };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.header {
+  height: 100px;
+  align-items: center;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  width: 100%;
+  padding: 0 12px;
+  box-sizing: border-box;
+  background: $bg_f6;
+  .fake-search {
+    height: 65px;
+    flex: 1;
+    background: #fff;
+    margin: 0 20px;
+    border-radius: 25px;
+    text-align: center;
+    line-height: 65px;
+    font-size: 26px;
+    color: #9e9e9e;
+  }
+}
+</style>

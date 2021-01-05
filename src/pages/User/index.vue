@@ -1,11 +1,12 @@
 <template>
   <div>
-    user
+    <div class="has-tab-bar container">user</div>
   </div>
 </template>
 
 <script>
 export default {
+  name: "User",
   setup() {
     return {};
   },

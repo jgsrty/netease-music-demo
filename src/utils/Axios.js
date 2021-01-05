@@ -26,7 +26,6 @@ service.interceptors.request.use(
 //响应拦截主要是对返回做统一处理
 service.interceptors.response.use(
   (response) => {
-    console.log(response)
     let { code, message } = response.data;
     if (code !== 200) {
       if (code === 5000) {

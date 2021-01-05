@@ -1,9 +1,10 @@
 <template>
-  <div>login</div>
+  <div class="container">login</div>
 </template>
 
 <script>
 export default {
+  name: "Login",
   setup() {
     return {};
   },

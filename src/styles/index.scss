@@ -1,0 +1,21 @@
+
+$bg_f6:#f6f6f6;
+
+html,
+body {
+  height: 100%;
+}
+.has-tab-bar {
+  padding-bottom: 100px;
+}
+.container {
+  background: $bg_f6;
+}
+.full-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.flex {
+  display: flex;
+}

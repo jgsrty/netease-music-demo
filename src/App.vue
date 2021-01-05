@@ -1,26 +1,58 @@
 <template>
-  <div class="test-viewport">测试转换</div>
-  <van-tabs>
-    <van-tab v-for="index in 8" :title="'标签 ' + index" :key="index">
-      内容 {{ index }}
-    </van-tab>
-  </van-tabs>
-  <router-view></router-view>
+  <div v-show="showHeader"><Header /></div>
+  <!-- <keep-alive>
+    <router-view v-if="route.meta.keepAlive"></router-view>
+  </keep-alive>
+  <router-view v-if="!route.meta.keepAlive"></router-view> -->
+  <!-- <router-view v-slot="{ Component }">
+    <keep-alive>
+      <component :is="Component" v-if="route.meta.keepAlive" />
+    </keep-alive>
+    <component :is="Component" v-if="!route.meta.keepAlive" />
+  </router-view> -->
+  <router-view v-slot="{ Component }">
+    <keep-alive include="Home,Play,User">
+      <component :is="Component" />
+    </keep-alive>
+  </router-view>
+  <tab-bar v-show="showTabBar"></tab-bar>
 </template>
 
 <script>
+import Header from "@/components/header";
+import tabBar from "@/components/tabBar";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { computed } from "vue";
 export default {
   name: "App",
+  components: {
+    Header,
+    tabBar,
+  },
+  setup() {
+    const router = useRouter();
+    const store = useStore();
+    router.beforeEach((to) => {
+      store.dispatch("commitActiveTab", to.name);
+      to.meta.header === undefined
+        ? store.dispatch("commitShowHead", true)
+        : store.dispatch("commitShowHead", false);
+      to.meta.tabbar === undefined
+        ? store.dispatch("commitShowTabBar", true)
+        : store.dispatch("commitShowTabBar", false);
+    });
+    let showHeader = computed(() => store.state.showHeader);
+    let showTabBar = computed(() => store.state.showTabBar);
+    return { showHeader, showTabBar };
+  },
 };
 </script>
 
-<style>
-.test-viewport {
-  width: 750px;
-  height: 100px;
-  font-size: 14px;
-  text-align: center;
-  line-height: 100px;
-  background: #13b5b1;
+<style lang="scss">
+#app {
+  height: 100%;
+  position: relative;
+  background: $bg_f6;
 }
 </style>
