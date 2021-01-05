@@ -1,37 +1,24 @@
-# 网易云音乐vue
+# vue3-music
 
-## [在线预览](http://47.100.53.108/#/index)
-## [安卓app下载](http://47.100.53.108:8082/)
-
-> 启动项目需要同时本地启动node服务
-
-## node服务
-
-``` bash
-# 拉取node服务至本地
-clone https://github.com/jgsrty/NeteaseCloudMusicApi.git
-
-# install dependencies
+## Project setup
+```
 npm install
-
-# node根目录中启动服务
-node app
 ```
 
-## vue
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
+### Compiles and minifies for production
+```
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-## 音乐api接口提供[地址](https://binaryify.github.io/NeteaseCloudMusicApi/#/)
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

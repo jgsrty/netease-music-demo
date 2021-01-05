@@ -1,5 +1,7 @@
 <template>
-  <div>login</div>
+  <div>
+    user
+  </div>
 </template>
 
 <script>
