@@ -1,9 +1,16 @@
+$bg_f6: #f6f6f6;
+$bg_subTitle: #9a9a9a;
+$bg_outline: #eaeaea;
 
-$bg_f6:#f6f6f6;
+$font12: 24px;
+$font14: 28px;
+$font16: 32px;
+$font18: 36px;
 
 html,
 body {
   height: 100%;
+  font-size: $font12;
 }
 .has-tab-bar {
   padding-bottom: 100px;
@@ -18,4 +25,11 @@ body {
 }
 .flex {
   display: flex;
+}
+.overflow-two {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  word-wrap: break-word;
 }

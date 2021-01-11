@@ -5,4 +5,7 @@ export default {
   commitShowTabBar({ commit }, flag) {
     commit("switchShowTabBar", flag);
   },
+  commitActiveTab({ commit }, val) {
+    commit("switchActiveTab", val);
+  },
 };

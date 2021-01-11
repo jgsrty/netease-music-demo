@@ -5,4 +5,7 @@ export default {
   switchShowTabBar(state, flag) {
     state.showTabBar = flag;
   },
+  switchActiveTab(state, val) {
+    state.activeTab = val;
+  },
 };
