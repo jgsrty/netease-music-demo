@@ -14,7 +14,12 @@ const router = createRouter({
   // history: createWebHashHistory(),
   routes: [
     { path: "/", redirect: "home" },
-    { path: "/login", name: "login", component: Login },
+    {
+      path: "/login",
+      name: "login",
+      component: Login,
+      meta: { header: false, tabbar: false },
+    },
     { path: "/home", name: "home", component: Home },
     { path: "/user", name: "user", component: User, meta: { header: false } },
     {
