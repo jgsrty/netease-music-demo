@@ -21,7 +21,12 @@ const router = createRouter({
       meta: { header: false, tabbar: false },
     },
     { path: "/home", name: "home", component: Home },
-    { path: "/user", name: "user", component: User, meta: { header: false } },
+    {
+      path: "/user",
+      name: "user",
+      component: User,
+      meta: { header: false, needLogin: true },
+    },
     {
       path: "/play",
       name: "play",

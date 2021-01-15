@@ -10,9 +10,13 @@
 <script>
 import { reactive, toRefs } from "vue";
 import UserService from "@/api/User";
+import Storage from "@/utils/Storage";
+import { useRouter, useRoute } from "vue-router";
 export default {
   name: "Login",
   setup() {
+    const router = useRouter();
+    const route = useRoute();
     let data = reactive({
       loginForm: {
         phone: "15617407527",
@@ -22,8 +26,10 @@ export default {
     });
     let userLoginPhone = async () => {
       let res = await UserService.userLoginPhone(data.loginForm);
-      console.log(res);
-      
+      Storage.set("userInfo", res);
+      route.query.redirect
+        ? router.push(route.query.redirect)
+        : router.push("/");
     };
     let test = async () => {
       let res = await UserService.test();

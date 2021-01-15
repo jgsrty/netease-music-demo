@@ -1,18 +1,18 @@
 let storage = {
   get(key) {
-    return window.localStorage.getItem(key);
+    return window.sessionStorage.getItem(key);
   },
   set(key, val) {
-    window.localStorage.setItem(
+    window.sessionStorage.setItem(
       key,
       typeof val !== "string" ? JSON.stringify(val) : val
     );
   },
   del(key) {
-    window.localStorage.removeItem(key);
+    window.sessionStorage.removeItem(key);
   },
   cle() {
-    window.localStorage.clear();
+    window.sessionStorage.clear();
   },
 };
 

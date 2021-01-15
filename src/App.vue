@@ -21,7 +21,6 @@
 <script>
 import Header from "@/components/header";
 import tabBar from "@/components/tabBar";
-import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { computed } from "vue";
 export default {
@@ -31,17 +30,7 @@ export default {
     tabBar,
   },
   setup() {
-    const router = useRouter();
     const store = useStore();
-    router.beforeEach((to) => {
-      store.dispatch("commitActiveTab", to.name);
-      to.meta.header === undefined
-        ? store.dispatch("commitShowHead", true)
-        : store.dispatch("commitShowHead", false);
-      to.meta.tabbar === undefined
-        ? store.dispatch("commitShowTabBar", true)
-        : store.dispatch("commitShowTabBar", false);
-    });
     let showHeader = computed(() => store.state.showHeader);
     let showTabBar = computed(() => store.state.showTabBar);
     return { showHeader, showTabBar };

@@ -8,18 +8,26 @@
     position="left"
     :style="{ height: '100%', width: '60%' }"
     teleport="#app"
-  />
+    @click="toLogin"
+    >登录</van-popup
+  >
 </template>
 
 <script>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 export default {
   setup() {
+    let router = useRouter();
     let showLeft = ref(false);
     let showLeftFun = () => {
       showLeft.value = true;
     };
-    return { showLeft, showLeftFun };
+    let toLogin = () => {
+      router.push("/login");
+      showLeft.value = false;
+    };
+    return { showLeft, showLeftFun, toLogin };
   },
 };
 </script>
