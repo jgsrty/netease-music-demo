@@ -3,13 +3,6 @@ import Storage from "@/utils/Storage";
 import store from "@/store";
 
 router.beforeEach((to) => {
-  store.dispatch("commitActiveTab", to.name);
-  to.meta.header === undefined
-    ? store.dispatch("commitShowHead", true)
-    : store.dispatch("commitShowHead", false);
-  to.meta.tabbar === undefined
-    ? store.dispatch("commitShowTabBar", true)
-    : store.dispatch("commitShowTabBar", false);
   // 未登录重定向至登录页
   if (to.meta.needLogin && !Storage.get("userInfo")) {
     router.push({
@@ -21,4 +14,11 @@ router.beforeEach((to) => {
   if (to.path == "/login" && Storage.get("userInfo")) {
     return false;
   }
+  store.dispatch("commitActiveTab", to.name);
+  to.meta.header === undefined
+    ? store.dispatch("commitShowHead", true)
+    : store.dispatch("commitShowHead", false);
+  to.meta.tabbar === undefined
+    ? store.dispatch("commitShowTabBar", true)
+    : store.dispatch("commitShowTabBar", false);
 });

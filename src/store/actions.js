@@ -8,4 +8,10 @@ export default {
   commitActiveTab({ commit }, val) {
     commit("switchActiveTab", val);
   },
+  commitUserInfo({ commit }, val) {
+    commit("setUserInfo", val);
+  },
+  commitLogout({ commit }) {
+    commit("clearUserInfo");
+  },
 };

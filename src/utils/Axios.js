@@ -26,12 +26,12 @@ service.interceptors.request.use(
 //响应拦截主要是对返回做统一处理
 service.interceptors.response.use(
   (response) => {
-    let { code, message } = response.data;
+    let { code } = response.data;
     if (code !== 200) {
       if (code === 5000) {
         console.log("token过期");
       }
-      return Promise.reject(new Error(message || "Error"));
+      return false;
     } else {
       return response.data;
     }

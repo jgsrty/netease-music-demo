@@ -8,17 +8,22 @@
     position="left"
     :style="{ height: '100%', width: '60%' }"
     teleport="#app"
-    @click="toLogin"
-    >登录</van-popup
   >
+    <div v-if="userInfo.nickname">{{ userInfo.nickname }}</div>
+    <div v-else @click="toLogin">登录</div>
+  </van-popup>
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 import { useRouter } from "vue-router";
 export default {
   setup() {
+    const store = useStore();
     let router = useRouter();
+
+    let userInfo = computed(() => store.state.userInfo);
     let showLeft = ref(false);
     let showLeftFun = () => {
       showLeft.value = true;
@@ -27,7 +32,7 @@ export default {
       router.push("/login");
       showLeft.value = false;
     };
-    return { showLeft, showLeftFun, toLogin };
+    return { showLeft, showLeftFun, toLogin, userInfo };
   },
 };
 </script>
