@@ -15,7 +15,7 @@
       <component :is="Component" />
     </keep-alive>
   </router-view>
-  <tab-bar v-show="showTabBar"></tab-bar>
+  <div v-show="showTabBar"><tab-bar></tab-bar></div>
 </template>
 
 <script>

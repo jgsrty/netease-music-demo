@@ -12,7 +12,12 @@
       </div>
     </div>
     <div class="songs">
-      <div class="item flex" v-for="item in newSongList" :key="item.id">
+      <div
+        class="item flex"
+        @click="getMusic(item)"
+        v-for="item in newSongList"
+        :key="item.id"
+      >
         <div class="left">
           <img class="full-img" :src="item.picUrl" alt="" />
         </div>
@@ -33,6 +38,8 @@
 <script>
 import { toRefs, reactive, onMounted } from "vue";
 import HomeService from "@/api/Home";
+import MusicService from "@/api/Music";
+import { useStore } from "vuex";
 export default {
   name: "Home",
   setup() {
@@ -41,6 +48,8 @@ export default {
       getPersonalized();
       getNewSong();
     });
+
+    let store = useStore();
     let data = reactive({
       // banner
       bannerList: [],
@@ -66,7 +75,37 @@ export default {
         data.newSongList[i].artists = artists.toString();
       }
     };
-    return { ...toRefs(data) };
+    let getMusic = async (item) => {
+      let { id, name, picUrl } = item;
+      let data = { name, picUrl };
+      let res = await MusicService.getMusicUrl({ id });
+      let resLyric = await MusicService.getMusicLyric({ id });
+      data.url = res.data[0].url;
+      data.lyric = formatLyric(resLyric.lrc.lyric);
+      data.duration = item.song.duration;
+      store.dispatch("commitCurrentMusic", data);
+      store.dispatch("commitPlayState", true);
+    };
+    let formatLyric = (data) => {
+      let lyric = [];
+      let arr = data.split("\n"); //切割数组
+      let len = arr.length;
+      for (let i = 0; i < len; i++) {
+        let tempRow = arr[i];
+        let tempArr = tempRow.split("]");
+        let text = tempArr.pop();
+        tempArr.map((item) => {
+          let obj = {};
+          let timeArr = item.substr(1, item.length - 1).split(":");
+          let s = parseInt(timeArr[0]) * 60 + Math.ceil(timeArr[1]);
+          obj.time = s;
+          obj.text = text;
+          lyric.push(obj);
+        });
+      }
+      return lyric;
+    };
+    return { ...toRefs(data), getMusic };
   },
 };
 </script>

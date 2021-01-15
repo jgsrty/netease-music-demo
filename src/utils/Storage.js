@@ -1,9 +1,6 @@
 let storage = {
   get(key) {
-    if (key === "userInfo") {
-      return JSON.parse(window.sessionStorage.getItem(key));
-    }
-    return window.sessionStorage.getItem(key);
+    return JSON.parse(window.sessionStorage.getItem(key));
   },
   set(key, val) {
     window.sessionStorage.setItem(

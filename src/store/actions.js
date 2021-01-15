@@ -14,4 +14,11 @@ export default {
   commitLogout({ commit }) {
     commit("clearUserInfo");
   },
+  // 当前播放歌曲
+  commitCurrentMusic({ commit }, val) {
+    commit("setCurrentMusic", val);
+  },
+  commitPlayState({ commit }, val) {
+    commit("setPlayState", val);
+  },
 };

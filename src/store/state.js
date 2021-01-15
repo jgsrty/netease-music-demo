@@ -4,4 +4,6 @@ export default {
   showTabBar: true,
   activeTab: "home",
   userInfo: Storage.get("userInfo") || {},
+  currentMusic: {},
+  playState: false,
 };

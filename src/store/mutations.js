@@ -16,4 +16,11 @@ export default {
     state.userInfo = {};
     Storage.del("userInfo");
   },
+  // 当前播放歌曲
+  setCurrentMusic(state, val) {
+    state.currentMusic = val;
+  },
+  setPlayState(state, val) {
+    state.playState = val;
+  },
 };
