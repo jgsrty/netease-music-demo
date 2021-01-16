@@ -66,6 +66,7 @@ export default {
   .item {
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
   .active {
     color: $prime;
