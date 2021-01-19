@@ -40,7 +40,7 @@ import { toRefs, reactive, onMounted } from "vue";
 import HomeService from "@/api/Home";
 import MusicService from "@/api/Music";
 import { useStore } from "vuex";
-import {useRouter} from 'vue-router'
+import { useRouter } from "vue-router";
 export default {
   name: "Home",
   setup() {
@@ -87,14 +87,17 @@ export default {
       data.duration = item.song.duration;
       store.dispatch("commitCurrentMusic", data);
       store.dispatch("commitPlayState", true);
-      router.push('play')
+      router.push("play");
     };
     let formatLyric = (data) => {
       let lyric = [];
       let arr = data.split("\n"); //切割数组
-      let len = arr.length;
+      let newArr = arr.filter((item) => {
+        return item !== "" && item.split("]").pop() !== "";
+      });
+      let len = newArr.length;
       for (let i = 0; i < len; i++) {
-        let tempRow = arr[i];
+        let tempRow = newArr[i];
         let tempArr = tempRow.split("]");
         let text = tempArr.pop();
         tempArr.map((item) => {
@@ -106,6 +109,17 @@ export default {
           lyric.push(obj);
         });
       }
+      let sortRule = (a, b) => {
+        return a.time - b.time;
+      };
+      lyric.sort(sortRule);
+      lyric.map((item, ind) => {
+        if (lyric.length !== ind + 1) {
+          item.nextTime = lyric[ind + 1].time;
+        }else{
+          item.nextTime = item.time;
+        }
+      });
       return lyric;
     };
     return { ...toRefs(data), getMusic };

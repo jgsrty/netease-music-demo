@@ -13,15 +13,18 @@
     ></audio>
     <ul>
       <li
-        :class="item.time === currentTime ? 'active' : ''"
+        :class="
+          currentTime >= item.time && currentTime < item.nextTime
+            ? 'active'
+            : ''
+        "
         v-for="item in currentMusic.lyric"
         :key="item.name"
       >
-        {{ item.time }} - {{ item.text }}
+        {{ item.time }} - {{ item.nextTime }} - {{ item.text }}
       </li>
     </ul>
     <div @click="pause">pause</div>
-    <!-- {{currentMusic}} -->
   </div>
 </template>
 
@@ -47,7 +50,7 @@ export default {
     let playEnded = () => {};
     let audioUpdate = (time) => {
       musicInfo.currentTime = parseInt(time.target.currentTime);
-      console.log(time.target.currentTime)
+      console.log(musicInfo.currentTime);
     };
     let audioLoadSuc = () => {};
     let autoplay = () => {};
