@@ -6,6 +6,11 @@ export default {
   switchShowTabBar(state, flag) {
     state.showTabBar = flag;
   },
+  switchShowPlay(state, flag) {
+    state.showPlay = flag;
+    state.showHeader = !flag;
+    state.showTabBar = !flag;
+  },
   switchActiveTab(state, val) {
     state.activeTab = val;
   },

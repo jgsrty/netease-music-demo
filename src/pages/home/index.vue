@@ -40,7 +40,7 @@ import { toRefs, reactive, onMounted } from "vue";
 import HomeService from "@/api/Home";
 import MusicService from "@/api/Music";
 import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+// import { useRouter } from "vue-router";
 export default {
   name: "Home",
   setup() {
@@ -51,7 +51,6 @@ export default {
     });
 
     let store = useStore();
-    let router = useRouter();
     let data = reactive({
       // banner
       bannerList: [],
@@ -87,7 +86,7 @@ export default {
       data.duration = item.song.duration;
       store.dispatch("commitCurrentMusic", data);
       store.dispatch("commitPlayState", true);
-      router.push("play");
+      store.dispatch("commitShowPlay", true);
     };
     let formatLyric = (data) => {
       let lyric = [];

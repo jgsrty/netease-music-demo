@@ -7,7 +7,7 @@
     >
       <van-icon name="wap-home-o" size="22" />首页
     </div>
-    <div class="play" @click="toPage('play')">
+    <div class="play" @click="store.dispatch('commitShowPlay', true)">
       <!-- 有歌曲加入 -->
       <div v-if="currentMusic.url" class="item empty flex">
         <img
@@ -47,7 +47,7 @@ export default {
       router.push(page);
       store.dispatch("commitActiveTab", page);
     };
-    return { active, toPage, currentMusic, playState };
+    return { active, toPage, currentMusic, playState, store };
   },
 };
 </script>
