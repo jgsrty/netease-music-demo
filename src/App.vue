@@ -5,7 +5,7 @@ import Header from "./components/header.vue";
 </script>
 
 <template>
-  <Header msg="test" />
+  <router-view></router-view>
 </template>
 
 <style></style>
