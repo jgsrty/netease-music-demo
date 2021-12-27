@@ -5,6 +5,7 @@
     {{ countPlus }}
   </div>
   <button @click="multiCount">add count</button>
+  <var-button type="primary">主要按钮</var-button>
 </template>
 
 <script setup>
