@@ -8,8 +8,8 @@ export default defineConfig({
   plugins: [
     vue(),
     components({
-      resolvers: [VarletUIResolver()]
-    })
+      resolvers: [VarletUIResolver()],
+    }),
   ],
   resolve: {
     alias: {
@@ -22,5 +22,9 @@ export default defineConfig({
         additionalData: '@import "@/style/variable.scss";',
       },
     },
+  },
+  server: {
+    host: "0.0.0.0",
+    port: 9527,
   },
 });

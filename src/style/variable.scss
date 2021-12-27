@@ -1,6 +1,14 @@
 $primaryColor: #e64340;
+$grayBack: #f6f6f6;
 
 $font12: 12px;
 $font14: 14px;
 $font16: 16px;
 $font18: 18px;
+
+.overflow-two {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

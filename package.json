@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@varlet/ui": "^1.23.11",
+    "axios": "^0.24.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"

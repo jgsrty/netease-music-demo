@@ -5,7 +5,19 @@ import Header from "./components/header.vue";
 </script>
 
 <template>
-  <router-view></router-view>
+  <Header msg="header" />
+  <div class="content">
+    <router-view></router-view>
+  </div>
 </template>
 
-<style></style>
+<style lang="scss">
+html,body {
+  height: 100%;
+  background: $grayBack;
+}
+#app {
+  position: relative;
+  margin-top: 50px;
+}
+</style>
