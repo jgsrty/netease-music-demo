@@ -1,27 +1,31 @@
 <template>
   <div class="header">
-    <div class="user">user</div>
-    <div class="search">
-      <var-input placeholder="请输入文本" clearable v-model="searchValue" />
-    </div>
     <div class="play">play</div>
+    <div class="search">search</div>
+    <div class="user" v-if="userInfo.userId">
+      <img :src="userInfo.avatarUrl" alt="" />
+    </div>
+    <div class="user" v-else>user2</div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+// defineProps({
+//   msg: String,
+// });
+import { useStore } from "vuex";
+import { computed } from "vue";
 
-defineProps({
-  msg: String,
-});
+const store = useStore();
+const userInfo = computed(() => store.getters.userInfo);
 
-let searchValue = ref("");
+console.log(userInfo.value);
 </script>
 
 <style scoped lang="scss">
 .header {
   height: 50px;
-  padding: 0 5px;
+  padding: 0 10px;
   box-sizing: border-box;
   background: $grayBack;
   opacity: 0.9;
@@ -33,5 +37,13 @@ let searchValue = ref("");
   display: flex;
   justify-content: space-between;
   align-items: center;
+  .user {
+    img {
+      display: block;
+      width: 35px;
+      height: 35px;;
+      border-radius: 50%;
+    }
+  }
 }
 </style>

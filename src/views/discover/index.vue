@@ -5,21 +5,33 @@
       <img class="swipe-item" :src="item.imageUrl" />
     </var-swipe-item>
   </var-swipe>
-  <!-- 歌单 -->
-  <div class="song-group">
-    <div class="item" v-for="item in data.songGroup" :key="item.id">
-      <img :src="item.coverImgUrl" :key="item.id" alt="" />
-      <div class="overflow-two name">{{ item.name }}</div>
+  <!-- 推荐歌单 -->
+  <div>
+    <div class="title-label">推荐歌单</div>
+    <div class="song-group">
+      <div
+        @click="toGroupDetail(item)"
+        class="item"
+        v-for="item in data.songGroup"
+        :key="item.id"
+      >
+        <img :src="item.coverImgUrl" :key="item.id" alt="" />
+        <div class="overflow-two name">{{ item.name }}</div>
+      </div>
     </div>
   </div>
-  <!-- 排行 -->
   <!-- 推荐歌曲列表 -->
+  <div>
+    <div class="title-label">推荐歌曲</div>
+    <div class="song-list">需要登录</div>
+  </div>
   <!-- <div v-for="item in 100" :key="item">{{item}}</div> -->
 </template>
 
 <script setup>
 import { onMounted, reactive } from "vue";
 import DiscoverService from "@/api/discover";
+import { useRouter } from "vue-router";
 
 onMounted(() => {
   getBanner();
@@ -30,6 +42,8 @@ const data = reactive({
   bannerList: [], //banner
   songGroup: [], //歌单
 });
+const router = useRouter();
+
 let getBanner = async () => {
   let res = await DiscoverService.getBanner();
   data.bannerList = res.banners;
@@ -37,6 +51,14 @@ let getBanner = async () => {
 let getRecommendSongGroup = async () => {
   let res = await DiscoverService.getRecommendSongGroup();
   data.songGroup = res.playlists;
+};
+// 歌单详情
+let toGroupDetail = (item) => {
+  // console.log(item);
+  router.push({
+    path: "songGroup",
+    query: { id: item.id },
+  });
 };
 </script>
 
@@ -55,9 +77,13 @@ let getRecommendSongGroup = async () => {
     border-radius: 5px;
   }
 }
+.title-label {
+  margin: 5px 0 5px 10px;
+  font-size: $font18;
+  font-weight: 600;
+}
 .song-group {
   margin: 0 10px;
-  margin-top: 5px;
   display: flex;
   overflow-x: scroll;
   .item {
@@ -76,5 +102,8 @@ let getRecommendSongGroup = async () => {
   .item:last-child {
     margin: 0;
   }
+}
+.song-list {
+  margin: 0 10px;
 }
 </style>

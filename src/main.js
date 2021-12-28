@@ -2,6 +2,7 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "@/router";
 import { store } from "@/store";
+import './utils/permission'
 
 // 自定义组件库样式 https://varlet.gitee.io/varlet-ui/#/zh-CN/style-provider
 import { StyleProvider } from "@varlet/ui";
